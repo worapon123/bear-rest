@@ -5,9 +5,10 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
   
 var bears = [
-    { id: '1', name: 'josonz' },
-    { id: '2', name: 'jimmy' }
+    { id: '1', name: 'JOSONZ' },
+    { id: '2', name: 'JIMMY' }
 ]; 
+var last_bear_id = 3;
   
 router.route('/bears') 
     .get(function(req, res) {
@@ -16,13 +17,14 @@ router.route('/bears')
     .post(function(req, res) { 
         var bear = {}; 
         bear.name = req.body.name; 
+        bear.id = "" + (last_bear_id++);
         bears.push(bear); 
-        res.json({ message: 'Bear created!' }); 
+        res.json({ message:'bbbbbbBear created!' }); 
     })
 router.route('/bears/:id')
     .delete(function(req, res){
         bears = bears.filter(b => b.id !== req.params.id)
-        res.json({ message: 'Bear deleted!' }); 
+        res.json({ message: 'bbbbbbbBear deleted!' }); 
     }) 
 
 app.use(cors());
